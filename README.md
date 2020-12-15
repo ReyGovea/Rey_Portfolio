@@ -12,5 +12,5 @@ Wanting to inquire on the range of the two different sales types. We can conclud
 
 Assigning macrovariable to the table title to streamline time and date of report. This means that as future sales are added to the companies database, the code will easily adapt represent the change in time. 
 
-![](Images/Screen%20Shot%202020-12-15%20at%204.04.15%20PM.png)
+![](/Portfolio%20Images/Screen%20Shot%202020-12-15%20at%204.04.15%20PM.png)
 
