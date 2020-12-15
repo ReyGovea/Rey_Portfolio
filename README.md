@@ -19,3 +19,6 @@ Assigning macrovariable to the table title to streamline time and date of report
 The origional report for the customers from Turkey has both large variable names as well as a ddmmmyyyy date format. In order to streamline the appearence of the report, applying a label change and the date format allows for easy reading of the customer information. 
 
 ![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-15%20at%204.24.13%20PM.png)
+
+## User Defined Formats 
+
