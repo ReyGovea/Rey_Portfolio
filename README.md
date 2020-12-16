@@ -31,7 +31,7 @@ The data set is organized by order_ID numbers that provide order dates, delivery
 
 Wanting to create a tabulation of the mean customer age for the group name and gender of the customer. Assigning Customer Group and Customer Gender as classification variables. This tabular report highlights that both older men and woman tend to be internet/catelog customers while both younger men and women tend to be Orion Club Gold Members. However, for normal orion members, young females tend to subscribe while older men on averege tend to apply. This information could be important to highlighting who the company should be advertising to as well as curtailing its services for. 
 
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/STA4203_Assignment%203.sas)
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%202.17.04%20PM.png)
 
 
 
