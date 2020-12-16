@@ -20,5 +20,9 @@ The origional report for the customers from Turkey has both large variable names
 
 ![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-15%20at%204.24.13%20PM.png)
 
-## User Defined Formats 
+## Subsetting and Grouping 
 
+The data set is organized by order_ID numbers that provide order dates, delivery dates, and order type. I want to organize the data by creating a new data set that is first set by order type in ascending sequence and then order date in descending sequence. Now that the origional data is organized, I want to subset to print BY order type for orders placed in the first 4 months of 2005 and those that have been delivered exactly 2 days after the order was placed. 
+
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%201.57.00%20PM.png)
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%201.57.07%20PM.png)
