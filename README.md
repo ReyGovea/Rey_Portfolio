@@ -34,7 +34,7 @@ Wanting to create a tabulation of the mean customer age for the group name and g
 ![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%202.17.04%20PM.png)
 
 # [Project 2: Seoul Bike Rental Regression Analysis: Summary](https://github.com/ReyGovea/R_Projects-) 
-* Collection of weather data that corresponds to bike rental counts in Seoul from [UCI Center of Machine Learning](https://archive.ics.uci.edu/ml/datasets/Seoul+Bike+Sharing+Demand )
+* Collection of weather data that corresponds to bike rental counts in Seoul from [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Seoul+Bike+Sharing+Demand )
 * Attempting to measure the relationship between weather conditions and the expected bike rental count 
 * considering the implications for bike rental companies as they address how weather impacts their demand 
 * Utilization of model selection, model comparison, Multiple Linear Regression (MLR), Zero Inflated Negative Binomial (ZINB) regression
