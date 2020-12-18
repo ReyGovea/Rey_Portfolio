@@ -65,7 +65,7 @@ There are a few conclusions that can be drawn from the residual plots: the data 
 When a data set is non-normal and there are problems with non-constant variance a power-transformation is useful tool in adjusting for the violation in model assumptions. Normally, a good way to estimate a good lambda value is through the box-cox method. However, with this data set holding a lot of zero values, the log based analysis results in undefined values. In this case, the Yeo-Johnson method is being used to account for the zero values in the data. 
 
 ![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.22.11%20PM.png?raw=true "Yeo-Johnson")
-![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.22.23%20PM.png?raw=true "Transformed MLR Resid.)
+![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.22.23%20PM.png?raw=true "Transformed MLR Resid.")
 
 We can see that the Yeo-Johnson method suggested a power transformation of roughlu lambda = 0.4 and the corresponding residuals for the transformed response variable. There seems to be a slight correction heteroscedasticity as random variance becomes better. However, observation 3998 has become a significantly leveraged outlier and the normal Q-Q plot indicates that the model is still not normal. 
 
@@ -73,7 +73,7 @@ We can see that the Yeo-Johnson method suggested a power transformation of rough
 
 A poisson regression model would initially be considered for correcting the non-normality assumption violation in the model. The data is skewed right and follows a general poisson distribution. However, a poisson regression model assumes that the mean and variance in the distribution is the same. The data has a mean of roughly 705 and variance of 416,021. This vast difference violates the model assumption of poisson regression. A ZINB model would not care about the equal variance and mean assumption, heteroscedasticity, and would not be constrained by normality. With 295 zero values in the data, the zero inflation is to correct for the large zero values that a general negative binomial model would not account for. 
 
-![ZINB Model Output](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.44.20%20PM.png?raw=true )
+![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.44.20%20PM.png?raw=true "ZINB Model Output" )
 
 When we run the zero inflated negative binomial model we can see that with a residual range of the data is from [-1.3887, 20.1355] and there is an IQR of 1.835. we can infer that there are some outliers present in the distribution, this may be of some concern and should be considered moving forward. With the zero inflated model, we can see that Temperature is the only significant variable with a p-value of 2.66e-05. This indicates that there is a statistically significant relationship between the Temperature variable and the log expected Rental Bike Count. We can interpret the coefficient to be that for every one unit change in temperature, the difference in the log of the expected Rental Bike Count is expected to change by 0.025176, given that the other predictors are held constant.
 
