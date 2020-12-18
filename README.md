@@ -12,26 +12,26 @@ Wanting to inquire on the range of the two different sales types. We can conclud
 
 Assigning macrovariable to the table title to streamline time and date of report. This means that as future sales are added to the companies database, the code will easily adapt represent the change in time. 
 
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-15%20at%204.04.15%20PM.png)
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-15%20at%204.04.15%20PM.png?raw=true "Date Format")
 
 ## Overriding Existing Labels and Formats 
 
 The origional report for the customers from Turkey has both large variable names as well as a ddmmmyyyy date format. In order to streamline the appearence of the report, applying a label change and the date format allows for easy reading of the customer information. 
 
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-15%20at%204.24.13%20PM.png)
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-15%20at%204.24.13%20PM.png?raw=true "Turkey Customers")
 
 ## Subsetting and Grouping 
 
 The data set is organized by order_ID numbers that provide order dates, delivery dates, and order type. I want to organize the data by creating a new data set that is first set by order type in ascending sequence and then order date in descending sequence. Now that the origional data is organized, I want to subset to print BY order type for orders placed in the first 4 months of 2005 and those that have been delivered exactly 2 days after the order was placed. 
 
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%201.57.00%20PM.png)
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%201.57.07%20PM.png)
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%201.57.00%20PM.png?raw=true "Orion Star Sales Details")
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%201.57.07%20PM.png?raw=true "Orion star ... Filters")
 
 ## Tabular Report 
 
 Wanting to create a tabulation of the mean customer age for the group name and gender of the customer. Assigning Customer Group and Customer Gender as classification variables. This tabular report highlights that both older men and woman tend to be internet/catelog customers while both younger men and women tend to be Orion Club Gold Members. However, for normal orion members, young females tend to subscribe while older men on averege tend to apply. This information could be important to highlighting who the company should be advertising to as well as curtailing its services for. 
 
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%202.17.04%20PM.png)
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-16%20at%202.17.04%20PM.png?raw=true "Tabular Report")
 
 # [Project 2: Seoul Bike Rental Regression Analysis: Summary](https://github.com/ReyGovea/R_Projects-) 
 * Collection of weather data that corresponds to bike rental counts in Seoul from [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Seoul+Bike+Sharing+Demand )
@@ -48,7 +48,7 @@ expected(RentedBikeCount)=β0+β1(Hour)+β2(Temperature)+β3(Humidity)+β7(Solar
 
 ... In order to apply a linear model to the data, the models assume that all independent variables are independant from another. In oder to verify that the new model does not defy this assumption the Variance Inflation Factor was used to measure independance. 
 
-![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%202.45.37%20PM.png)
+![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%202.45.37%20PM.png?raw=true "VIF")
 
 The Assumption that all of the variables in the model are independent is validated by all VIF values in the model being less than 5. We can now continue to assess the other assumptions in the model to see if a MLR model is a good fit for the data. 
 
@@ -56,7 +56,7 @@ The Assumption that all of the variables in the model are independent is validat
 
 Now that we know there is no multicolinearity in the model, it is important to look at the residuals of the model to diagnose issues with non-linearity, non-constant variance, and extreme outliers. Violation of these conditions in the data would make a MLR model potentially a bad fit. 
 
-![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%202.59.51%20PM.png)
+![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%202.59.51%20PM.png?raw=true "MLR Resid.")
 
 There are a few conclusions that can be drawn from the residual plots: the data is non-linear and skewed right, there is a bottom floor to the values and a residuals shape that indicates heteroscedasticity, and there are outliers in the data but none that indicate significant leverage. 
 
@@ -64,8 +64,8 @@ There are a few conclusions that can be drawn from the residual plots: the data 
 
 When a data set is non-normal and there are problems with non-constant variance a power-transformation is useful tool in adjusting for the violation in model assumptions. Normally, a good way to estimate a good lambda value is through the box-cox method. However, with this data set holding a lot of zero values, the log based analysis results in undefined values. In this case, the Yeo-Johnson method is being used to account for the zero values in the data. 
 
-![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.22.11%20PM.png)
-![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.22.23%20PM.png)
+![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.22.11%20PM.png?raw=true "Yeo-Johnson")
+![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.22.23%20PM.png?raw=true "Transformed MLR Resid.)
 
 We can see that the Yeo-Johnson method suggested a power transformation of roughlu lambda = 0.4 and the corresponding residuals for the transformed response variable. There seems to be a slight correction heteroscedasticity as random variance becomes better. However, observation 3998 has become a significantly leveraged outlier and the normal Q-Q plot indicates that the model is still not normal. 
 
@@ -73,7 +73,7 @@ We can see that the Yeo-Johnson method suggested a power transformation of rough
 
 A poisson regression model would initially be considered for correcting the non-normality assumption violation in the model. The data is skewed right and follows a general poisson distribution. However, a poisson regression model assumes that the mean and variance in the distribution is the same. The data has a mean of roughly 705 and variance of 416,021. This vast difference violates the model assumption of poisson regression. A ZINB model would not care about the equal variance and mean assumption, heteroscedasticity, and would not be constrained by normality. With 295 zero values in the data, the zero inflation is to correct for the large zero values that a general negative binomial model would not account for. 
 
-![](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.44.20%20PM.png)
+![ZINB Model Output](https://github.com/ReyGovea/R_Projects-/blob/main/Portfolio%20Work/Images/Screen%20Shot%202020-12-17%20at%203.44.20%20PM.png?raw=true )
 
 When we run the zero inflated negative binomial model we can see that with a residual range of the data is from [-1.3887, 20.1355] and there is an IQR of 1.835. we can infer that there are some outliers present in the distribution, this may be of some concern and should be considered moving forward. With the zero inflated model, we can see that Temperature is the only significant variable with a p-value of 2.66e-05. This indicates that there is a statistically significant relationship between the Temperature variable and the log expected Rental Bike Count. We can interpret the coefficient to be that for every one unit change in temperature, the difference in the log of the expected Rental Bike Count is expected to change by 0.025176, given that the other predictors are held constant.
 
