@@ -6,7 +6,7 @@
 
 Wanting to inquire on the range of the two different sales types. We can conclude that catelog sales are more prfitable than the companies internet sales. With a maximum sales value of roughly $1937 and a mean of approximately $200 which exceeds the internets sales values. 
 
-![](Portfolio Images/Screen Shot 2020-12-15 at 3.53.04 PM.png)
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202020-12-15%20at%203.53.04%20PM.png?raw=true)
 
 ## Inserting Current Times into Titles 
 
