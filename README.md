@@ -92,6 +92,112 @@ The bike rental industry in Seoul has largely grown in the past decade as techno
 
 The outcome of the ZINB model suggests that temperature is the statistically significant variable that impacts the change in bike rental counts. The implications for bike rental companies may include scheduling maintenence of bikes for extreme weather temperatures where demand for their product will be at its lowest point. This would maximize the supply of the product for high demand. Also, the company could look at temperature variations in the city and decide where to locate their rental stations to accomidate regions that are associated with better weather conditions. In these ways, actionable descisions can be made to adjust to the impacts that weather has on the industry. 
 
+# [Project 3: SQL Queries: Objectives](https://github.com/ReyGovea/SAS-Projects/blob/main/Code_%2002%20SQL%2C%20Basic%20Queries%20HW.sas.pdf)
+* Utilize SQL coding in SAS terminal to extract and combine essential information from the Orion buisness tables
+* Subsetting data to organize and highlight information 
+* Creating variables 
+
+## Subsetting data 
+
+Taking the table of "Employee Payroll" from the Orion data base. Utilizing the select statement to subset the data into a table of four variables after printing the whole data set.
+``` 
+Proc SQL;
+	SELECT *
+		FROM orion.Employee_Payroll;
+	SELECT Employee_ID, Employee_Gender, Marital_Status, Salary
+		FROM orion.Employee_payroll;
+Quit;
+```
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%204.53.43%20PM.png?raw=true "Orion payroll subset" )
+
+## Creating a Calculated Variable
+
+The employee payroll data set has a percentage of their employees slary that is applied to taxes. The tax rate is considered to be 1/3 of the salary. We want to create a calculated variable called tax that is a calculation of the expected tax amount.
+
+```
+Proc SQL;
+	SELECT Employee_ID, Employee_Gender, Marital_Status, Salary, Salary*.333 AS Tax
+		FROM orion.Employee_payroll; 
+Quit;
+```
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%205.03.00%20PM.png?raw=true "Tax Calculation")
+
+## Conditional Processing 
+
+The Orion staff table has given variables such as the employee_id, Job_titles and Salary of their workers. I want to create a variable that assigns three salary ranges for Job_titles labeled "Low" "Medium" and "High". 
+
+```
+Proc SQL;
+
+	SELECT Employee_ID, Salary,
+			CASE scan(Job_title, -1, ' ') /*needing a space in the quote for program to notice more than one word*/
+				WHEN "Manager" THEN "Manager"
+				WHEN "Director" THEN "Director"
+				WHEN "Officer" THEN "Executive"
+				WHEN "President" THEN "Executive"
+				ELSE "NA"
+			END AS Level,
+			
+			CASE /*needing to include calculated level by the when statement for code to recognize non-existing data*/
+				WHEN Calculated Level='Manager' AND Salary < 52000 THEN 'Low'
+				WHEN Calculated Level='Manager' AND Salary ge 52000 AND Salary le 72000 THEN 'Medium'
+				WHEN Calculated Level='Manager' AND Salary > 72000 THEN 'Large'
+				
+				WHEN Calculated Level='Director' AND Salary < 108000 THEN 'Low'
+				WHEN Calculated Level='Director' AND Salary ge 108000 AND Salary le 135000 THEN 'Medium'
+				WHEN Calculated Level='Director' AND Salary > 135000 THEN 'High'
+				
+				WHEN Calculated Level='Executive' AND Salary < 240000 THEN 'Low'
+				WHEN Calculated Level='Executive' AND Salary ge 240000 AND Salary le 300000 THEN 'Medium'
+				WHEN Calculated Level='Executive' AND Salary > 300000 THEN'High'
+			END AS Salary_Range
+	FROM orion.Staff
+	WHERE Calculated Level NE 'NA'; /*This statement should make including 'NA' in 2nd case statement not needed*/
+Quit;
+proc print data=orion.staff; run;
+
+```
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%205.09.59%20PM.png?raw=true "Salary Ranges")
+
+## Eliminating Duplicates 
+
+Orion holds tables of their employee's addresses. The table that holds these addresses has duplicates of the cities that their employees reside. I want to solve for what cities the employee's reside in without duplicates. 
+
+```
+title 'Cities Where Employees Live';
+Proc SQL;
+	Describe Table Orion.Employee_Addresses; /*Looking at variable names and type in table*/
+	SELECT UNIQUE(City)
+		FROM Orion.Employee_Addresses;
+Quit;
+title;
+```
+
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%205.16.55%20PM.png?raw=true "Employee cities")
+
+## Limiting Calculated Totals
+
+Creating a calculated total of the sum total of employee donations per quarter. I want to see if the total donations of the employee's are greater than $90. 
+
+```
+Proc SQL;
+	Describe Table orion.Employee_donations; /*looking at table attributes*/
+	SELECT Employee_ID, Recipients, qtr1+qtr2+qtr3+qtr4 AS Total
+	FROM orion.Employee_donations 
+		WHERE CALCULATED total >90;
+Quit;
+```
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%205.21.48%20PM.png?raw=true "Employee donations > $90")
+
+
+
+
+
+
+
+
+
+
 
 
 
