@@ -92,7 +92,7 @@ The bike rental industry in Seoul has largely grown in the past decade as techno
 
 The outcome of the ZINB model suggests that temperature is the statistically significant variable that impacts the change in bike rental counts. The implications for bike rental companies may include scheduling maintenence of bikes for extreme weather temperatures where demand for their product will be at its lowest point. This would maximize the supply of the product for high demand. Also, the company could look at temperature variations in the city and decide where to locate their rental stations to accomidate regions that are associated with better weather conditions. In these ways, actionable descisions can be made to adjust to the impacts that weather has on the industry. 
 
-# [Project 3: SQL Queries: Objectives](https://github.com/ReyGovea/SAS-Projects/blob/main/Code_%2002%20SQL%2C%20Basic%20Queries%20HW.sas.pdf)
+# [Project 3: SQL Queries: Objectives](https://github.com/ReyGovea/SQL-Projects)
 * Utilize SQL coding in SAS terminal to extract and combine essential information from the Orion buisness tables
 * Subsetting data to organize and highlight information 
 * Creating variables 
