@@ -167,6 +167,7 @@ title;
 * The current price is the the product of inflation factor and years since origional price multiplied against origional price
 * Wanting to Create a report that of all of the Roller Scates prices 
 * Also want to create a report that compares the old and new prices in the catelog
+
 ```
 Proc SQL;
 	CREATE VIEW Current_Catelog AS 
