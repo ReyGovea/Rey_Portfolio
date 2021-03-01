@@ -93,34 +93,8 @@ The bike rental industry in Seoul has largely grown in the past decade as techno
 The outcome of the ZINB model suggests that temperature is the statistically significant variable that impacts the change in bike rental counts. The implications for bike rental companies may include scheduling maintenence of bikes for extreme weather temperatures where demand for their product will be at its lowest point. This would maximize the supply of the product for high demand. Also, the company could look at temperature variations in the city and decide where to locate their rental stations to accomidate regions that are associated with better weather conditions. In these ways, actionable descisions can be made to adjust to the impacts that weather has on the industry. 
 
 # [Project 3: SQL Queries: Objectives](https://github.com/ReyGovea/SQL-Projects)
-* Utilize SQL coding in SAS terminal to extract and combine essential information from the Orion buisness tables
-* Subsetting data to organize and highlight information 
-* Creating variables 
-
-## Subsetting data 
-
-Taking the table of "Employee Payroll" from the Orion data base. Utilizing the select statement to subset the data into a table of four variables after printing the whole data set.
-``` 
-Proc SQL;
-	SELECT *
-		FROM orion.Employee_Payroll;
-	SELECT Employee_ID, Employee_Gender, Marital_Status, Salary
-		FROM orion.Employee_payroll;
-Quit;
-```
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%204.53.43%20PM.png?raw=true "Orion payroll subset" )
-
-## Creating a Calculated Variable
-
-The employee payroll data set has a percentage of their employees slary that is applied to taxes. The tax rate is considered to be 1/3 of the salary. We want to create a calculated variable called tax that is a calculation of the expected tax amount.
-
-```
-Proc SQL;
-	SELECT Employee_ID, Employee_Gender, Marital_Status, Salary, Salary*.333 AS Tax
-		FROM orion.Employee_payroll; 
-Quit;
-```
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%205.03.00%20PM.png?raw=true "Tax Calculation")
+* Utilize SQL coding in SAS terminal to extract and combine essential information from the Orion Star buisness tables
+* Orion Star company stores information about employees and customers regarding location, days of employement, donations, sales, etc.
 
 ## Conditional Processing 
 
@@ -159,40 +133,32 @@ proc print data=orion.staff; run;
 ```
 ![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%205.09.59%20PM.png?raw=true "Salary Ranges")
 
-## Eliminating Duplicates 
-
-Orion holds tables of their employee's addresses. The table that holds these addresses has duplicates of the cities that their employees reside. I want to solve for what cities the employee's reside in without duplicates. 
-
+## Joining Multiple Tables 
+* Report the Orion Star Employees with >30 yrs of service as of 12/31/2007
+* Display Employees name, Years of service, and Employee's manager name
+* Order by manager name alphabetically, descending Years of Service, and employee name alphabetically
+* Label Columns
 ```
-title 'Cities Where Employees Live';
+title1 "Employees With More than 30 Years of Service ";
+title2 "As of December 31, 2007";
 Proc SQL;
-	Describe Table Orion.Employee_Addresses; /*Looking at variable names and type in table*/
-	SELECT UNIQUE(City)
-		FROM Orion.Employee_Addresses;
+	Select a.Employee_name "Employee Name", /*specifying the table for employee name bc of duplicates*/
+			intck('year',Employee_Hire_Date,'31DEC2007'd) as YOS label= "Years of Service", /*Calculating YOS*/
+			coalesce(a2.Employee_Name, "Unknown") AS Manager_Name Label="Manager Name" /*finding the first non-missing value to correspond manager names*/
+		FROM orion.Employee_Addresses as a
+				INNER JOIN orion.Employee_Payroll as p /*wanting intersection of EMPLID from payroll and addresses*/
+					ON a.Employee_ID = p.Employee_ID
+				INNER JOIN orion.Employee_Organization as o /*wanting intersection of EMPLID from addresses and organization*/
+					ON a.Employee_ID=o.Employee_ID
+				LEFT JOIN orion.Employee_Addresses as a2 /*Wanting the set addresses EMPLID that also have a Manager ID from the organization set*/ 
+					ON o.Manager_ID = a2.Employee_ID
+		HAVING CALCULATED YOS > 30 /*subsetting by YOS*/
+		ORDER BY Manager_Name, YOS Desc, Employee_Name /*Manager name (ALPHA) => YOS Desc => Employee name (ALPHA)*/
+;
 Quit;
 title;
 ```
-
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%205.16.55%20PM.png?raw=true "Employee cities")
-
-## Limiting Calculated Totals
-
-Creating a calculated total of the sum total of employee donations per quarter. I want to see if the total donations of the employee's are greater than $90. 
-
-```
-Proc SQL;
-	Describe Table orion.Employee_donations; /*looking at table attributes*/
-	SELECT Employee_ID, Recipients, qtr1+qtr2+qtr3+qtr4 AS Total
-	FROM orion.Employee_donations 
-		WHERE CALCULATED total >90;
-Quit;
-```
-![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-01-17%20at%205.21.48%20PM.png?raw=true "Employee donations > $90")
-
-
-
-
-
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-03-01%20at%202.52.38%20PM.png?raw=true)
 
 
 
