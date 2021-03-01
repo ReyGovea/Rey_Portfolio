@@ -160,10 +160,52 @@ title;
 ```
 ![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-03-01%20at%202.52.38%20PM.png?raw=true)
 
+## Creating View that Updates Over Time 
 
+* The View is an continually updating query that provides a current catelog for Orion Star
+* The current price is the the product of inflation factor and years since origional price multiplied against origional price
+* Wanting to Create a report that of all of the Roller Scates prices 
+* Also want to create a report that compares the old and new prices in the catelog
+```
+Proc SQL;
+	CREATE VIEW Current_Catelog AS 
+		Select Product_Category, Product_Group,d.Product_ID,Product_Line,
+				Product_Name, Supplier_Country, Supplier_ID, Supplier_Name,
+				ROUND(Unit_Sales_Price, .01)*(ROUND(Factor,.01)**(year(today())-year(start_Date))) AS Price
+		FROM Orion.Product_Dim as d,
+				Orion.Price_list as l
+		WHERE d.Product_ID=l.Product_ID
+;
+Quit;
 
+/* Part B: provide table of roller skates items that is sorted*/
+Title "Orion Catelog of Roller Skates";
+Proc SQL;
+	Select Supplier_Name, Product_Name, Price
+		FROM Current_Catelog
+		WHERE Product_Name Contains "Roller Skate"
+		ORDER BY Supplier_Name, Price
+;
+Quit;
+Title;
 
+/* Part C: provide the current and old prices with the increase displayed*/
+Title "Orion Increase in Product Prices";
+Proc SQL;
+	Select Product_Name, l.Unit_Sales_Price, Price, 
+			Price-l.Unit_Sales_Price AS Increase
+		FROM Current_Catelog AS c, 
+		Orion.Price_List AS l
+		WHERE c.product_id=l.product_id
+		HAVING Calculated Increase > 5
+		ORDER BY Increase desc
+;
+Quit;
+title;
+```
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-03-01%20at%203.30.52%20PM.png?raw=true)
 
+![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-03-01%20at%203.31.06%20PM.png?raw=true)
 
 
 
