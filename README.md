@@ -138,6 +138,7 @@ proc print data=orion.staff; run;
 * Display Employees name, Years of service, and Employee's manager name
 * Order by manager name alphabetically, descending Years of Service, and employee name alphabetically
 * Label Columns
+
 ```
 title1 "Employees With More than 30 Years of Service ";
 title2 "As of December 31, 2007";
@@ -203,6 +204,7 @@ Proc SQL;
 Quit;
 title;
 ```
+
 ![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-03-01%20at%203.30.52%20PM.png?raw=true)
 
 ![](https://github.com/ReyGovea/SAS-Projects/blob/main/Portfolio%20Images/Screen%20Shot%202021-03-01%20at%203.31.06%20PM.png?raw=true)
